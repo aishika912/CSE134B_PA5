@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<link rel="stylesheet" type="text/css" href="CSS/home.css">
+	<title>StickDex</title>
+</head>
+
+<body onload="loadPageFn()">
+
+	<!--Nav Bar-->
+	<nav>
+
+		<span class="dropdown">
+			<div class="homelink" style="text-align:center;">
+				<a href="home.html">stickDex</a>
+				
+				<button id="signOut" onclick="signOut()">Logout</button>
+				<button class="dropbtn">
+					<img src="IMG/hamburger.png" style="width:20px;height:20px;">
+				</button>
+			</div>
+			<div class="navbarlinks">
+				<span class = "navbarvals"><a href="home.html#scrollpadding2">My Collections</a></span> 
+				<span class="navbarvals"><a href="home.html#scrollpadding1">My WishList</a></span>
+			</div>
+		</span>
+	</nav>
+
+	<div style="text-align:center;">
+	<a href="#popup1"><button class ="addlipstick">ADD STICK</button></a>
+	</div>
+	
+
+
+	<div class = "addpadding">
+		<div id = "scrollpadding1"></div>
+		<h3 id = "wishListTag">Wish List</h3>
+			<ul id = "theWishList" class ="wishList">
+			</ul>
+	
+
+
+		<h3>My Looks</h3>
+		<div id="data-info">
+			<h4>Colors Owned</h4>
+			<div id = "data-owned" class ="wishList"></div>
+			<h4>Colors Wanted</h4>
+			<div id = "data-wanted" class ="wishList"></div>
+		</div>
+	
+		<div id = "scrollpadding2"></div>
+		<h3 id = "currentcollection">Current Collection</h3>
+		<div class="columns">
+			<ul id = "theCollectionList">
+			</ul>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+	<!-- Pop up to add new lipstick -->
+
+	<div id="popup1" class="overlay">
+		<div class="popup">
+			
+			<h2>Add a lipstick to your collection:</h2>
+			<a class="close" href="#">&times;</a>
+			
+			<div class="content">
+			<form>
+				<span>
+					Brand:<br>
+					<input type="text" id="brandname">
+				</span>
+				<span>
+					<br><br>Name:<br>
+					<input type="text" id="stickname">
+				</span>
+				<span>
+					<br><br>Price:<br>
+					<input type="text" id="priceval">
+				</span>
+				<span >
+					<br><br>Color:<br>
+					<input type="color" id="colorval"> <br><br>
+				</span>
+				<span>
+					<select id ="typeval">
+						<option>Lipstick</option>
+						<option>Liquid</option>
+						<option>Lip Gloss</option>
+						<option>Lip Liner</option>
+					</select>
+				</span>
+				<span>
+					<input type="checkbox" id="ownval">
+					Own? <br>
+				</span>
+				<br>
+				<input type="file" name="pic" id="uploadpic" accept="image/*">
+			</form>
+			
+			<div style="text-align:center;">
+				<button id = "addtocolbtn" class ="popbtn" onclick="addStickFn()">
+				ADD TO COLLECTION
+				</button>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Pop Up to edit lipstick -->
+
+	<div id="popup2" class="overlay">
+		<div class="popup">
+			<h2>Edit Lipstick</h2>
+			<a class="close" href="#">&times;</a>
+			<div class="content">
+				<img id="imgp" style="width: auto;max-width: 150px;height: auto;max-height: 150px;" alt="lipstickimg">
+				<p id="brandp">Brand:</p>
+				<p id="namep">Name:</p>
+				<p id="colorp">Color:</p>
+				<p id="pricep">Price:</p>
+				<span id="typep">Type:</span>
+				<span id="ownp">Own:</span><br>
+				<button class="popbtn" onclick="updateStickFn()">UPDATE LIPSTICK</button>
+				<button class ="popbtn" onclick="deleteStickFn()">
+					REMOVE
+				</button>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBIfMY5xezNuNMiA2eh7c7llklT0INoBkQ",
+    authDomain: "lipstickdex.firebaseapp.com",
+    databaseURL: "https://lipstickdex.firebaseio.com",
+    storageBucket: "gs://lipstickdex.appspot.com",
+    messagingSenderId: "214807410574"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script type='text/javascript' src="JS/home.js"></script>
+
+</body>
+
+</html>

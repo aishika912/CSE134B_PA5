@@ -1,0 +1,191 @@
+@font-face {
+	font-family:UgoFont;
+	src: url(../Fonts/UGO-COLOR.ttf);
+}
+@font-face {
+	font-family: scriptFont;
+	src: url(../Fonts/SignPainter-HouseScript.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+	background-image:url("../IMG/banner.jpg");
+	height: 150px;
+	/*filter: brightness(50%);
+	*/
+	/*text-align:center;
+	/*margin-top:0;
+	padding-top:0;*/
+}
+
+.homelink {
+	font-size: 70px;
+	padding-top: 25px;
+	font-family:scriptFont;
+	text-align: center;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+	color:white;
+}
+
+a {
+	text-decoration: none;
+	color:white;
+}
+
+p {
+	text-align: center;
+	font-size: 35px;
+	font-family: scriptFont;
+}
+
+
+.form-sub {
+	padding-top: 20px;
+	/*text-align:center;*/
+	font-family:"helvetica";
+	font-size:15px;
+	width: 60%;
+	margin: 0 auto;
+}
+
+
+form input {
+	height: 20px;
+	width: 150px;
+}
+
+.loginbtn {
+	font-family: UGOFont;
+	font-size:15px;
+	background-color: #008080;
+	color: white;
+	margin-top: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-radius: 5px;
+	border:none;
+}
+
+#newuserbtn {
+	font-family: "helvetica";
+	font-size: 15px;
+	padding-left:10px;
+	color: black;
+}
+
+#newuserbtn:link,
+#newuserbtn:visited {
+	color:black;
+	text-decoration: none;
+}
+
+#newuserbtn:hover {
+	color:#008080;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+#signOut {
+	font-size: 15px;
+	padding: 0;
+	height: 30px;
+	width: 120px;
+	margin: 10px;
+	float: right;
+	background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,.signupbtn {
+    width: 30%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+}
+.clearfix {
+	text-align: center;
+}
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #000;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+}
+

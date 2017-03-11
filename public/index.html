@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta name="google-signin-client_id" content="214807410574-0qon7ml41jbfgcd8gcg9lvk2t2tokk23.apps.googleusercontent.com">
+	<link rel="stylesheet" type="text/css" href="CSS/login.css">
+	<title>StickDex</title>
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script>
+	  	// Initialize Firebase
+	  	var config = {
+	    	apiKey: "AIzaSyBIfMY5xezNuNMiA2eh7c7llklT0INoBkQ",
+	    	authDomain: "lipstickdex.firebaseapp.com",
+	    	databaseURL: "https://lipstickdex.firebaseio.com",
+	    	storageBucket: "gs://lipstickdex.appspot.com",
+	    	messagingSenderId: "214807410574"
+	  	};
+	  	firebase.initializeApp(config);
+	  	var provider = new firebase.auth.GoogleAuthProvider();
+	  	function initApp() {
+		  	demo.addEventListener("click", 	e=>{firebase.auth().signInWithRedirect(provider)});
+
+		  	provider.addScope('https://www.googleapis.com/auth/plus.login');
+			provider.setCustomParameters({
+				'login_hint': 'user@example.com'
+			});
+			firebase.auth().getRedirectResult().then(function(result) {
+			  if (result.credential) {
+			    // This gives you a Google Access Token. You can use it to access the Google API.
+			    var token = result.credential.accessToken;
+			    // ...
+			  }
+			  // The signed-in user info.
+			  var user = result.user;
+			  console.log("wooo!");
+			}).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // The email of the user's account used.
+			  var email = error.email;
+			  // The firebase.auth.AuthCredential type that was used.
+			  var credential = error.credential;
+			  // ...
+			});
+			firebase.auth().onAuthStateChanged(function(user) {
+			  if (user) {
+			    // User is signed in.
+			    var email = user.email;
+			    console.log(email);
+			    window.location = '/home.html'
+			  } else {
+			    // No user is signed in.
+			    console.log("nobody is signed in!");
+			  }
+			});
+			// Get the modal
+			var modal = document.getElementById('id01');
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+		    	if (event.target == modal) {
+		        	modal.style.display = "none";
+		    	}
+			}
+
+		}
+		function checkPass()
+		{
+		    //Store the password field objects into variables ..
+			var email = document.getElementById('email').value;
+		    var pass1 = document.getElementById('psw').value;
+		    var pass2 = document.getElementById('psw-repeat').value;
+		    console.log("Email - " + email);
+		    //Compare the values in the password field 
+		    //and the confirmation field
+		    if(pass1.value == pass2.value){
+		    	if (pass1.length < 6) {
+		    		return;
+		    	}
+		        //The passwords match. 
+		        //Set the color to the good color and inform
+		        //the user that they have entered the correct password 
+		        firebase.auth().createUserWithEmailAndPassword(email, pass1).catch(function(error) {
+			        // Handle Errors here.
+			        var errorCode = error.code;
+			        var errorMessage = error.message;
+			        // [START_EXCLUDE]
+			        if (errorCode == 'auth/weak-password') {
+			          alert('The password is too weak.');
+			        } else {
+			          alert(errorMessage);
+			        }
+			        console.log(error);
+			    });
+			        // [END_EXCLUDE]
+				//location.reload();
+		    }else{
+		        //The passwords do not match.
+		        //Set the color to the bad color and
+		        //notify the user.
+		        alert("Passwords Do Not Match!");
+		        return;
+		    }
+		}
+
+		function toggleSignIn() {
+	        var email = document.getElementById('email-1').value;
+	        var password = document.getElementById('psw-1').value;
+	        // Sign in with email and pass.
+	        // [START authwithemail]
+	        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+	          // Handle Errors here.
+	          var errorCode = error.code;
+	          var errorMessage = error.message;
+	          // [START_EXCLUDE]
+	          if (errorCode === 'auth/wrong-password') {
+	            alert('Wrong password.');
+	          } else {
+	            alert(errorMessage);
+	          }
+	          console.log(error);
+	          // [END_EXCLUDE]
+	        });
+	        // [END authwithemail]
+	      if (firebase.auth().currentUser) {
+	      	window.location = '/home.html'
+	      }
+	    }
+	    function signOut() {
+	    	firebase.auth().signOut(); 
+	    	var auth2 = gapi.auth2.getAuthInstance();
+    		auth2.signOut().then(function () {
+      			console.log('User signed out.');
+    		});
+	    	window.location.replace('index.html');
+	    }
+	    window.onload = function() {
+	    	var user = firebase.auth().currentUser;
+	    	if(user) {
+	    		firebase.auth().signOut(); 
+	    		var auth2 = gapi.auth2.getAuthInstance();
+    			auth2.signOut();//.then(function () {
+      				//console.log('User signed out.');
+    //			});
+    		}
+      		initApp();
+    	};
+  </script>
+</head>
+
+<body>
+	<nav>
+		<div class="homelink" style="text-align:center;">
+			<a href="index.html">stickDex</a>
+			<button id="signOut" onclick="signOut()">Logout</button>
+		</div>
+	</nav>
+
+	<p>
+		A fun way to keep track of your lipstick collection.
+	</p>
+
+	<div class="form-sub">
+		<span>				
+			Username<br>
+			<input type="email" placeholder="Enter Email" name="email" id="email-1" required>
+		</span>
+		<span>
+			<br><br>Password<br>
+			<input type="password" placeholder="Enter Password" id="psw-1" required>
+		</span>
+		<div class="clearfix">
+	        <button type="submit" class="signupbtn" onclick="toggleSignIn()">Sign In</button>
+	      </div>
+	</div>
+	<br>
+	<!--
+	<div style="text-align: center; border: 2px dashed black;">
+	<input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+          &nbsp;&nbsp;&nbsp;
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+          <br/><br/>
+          <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+          &nbsp;&nbsp;&nbsp;
+    </div>
+    -->
+	<div style="text-align: center;">
+		<!-- Button to open the modal -->
+		<button onclick="document.getElementById('id01').style.display='block'" style="display: inline-block; 
+		height: 36px; width: 120px; padding: 0; box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);">
+			Sign Up
+		</button>
+		<div class="g-signin2" id="demo" style="display: inline-flex; margin-left: 20px;"></div>
+	</div>
+
+
+	<!-- The Modal (contains the Sign Up form) -->
+	<div id="id01" class="modal">
+	  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+	  <div class="form-sub modal-content animate" action="">
+	    <div class="container">
+	      <label><b>Email</b></label>
+	      <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+	      <label><b>Password</b></label>
+	      <input type="password" placeholder="Enter Password" id="psw" required>
+
+	      <label><b>Repeat Password</b></label>
+	      <input type="password" placeholder="Repeat Password" id="psw-repeat" required>
+	      <span id="confirmMessage" class="confirmMessage"></span>
+	      <div class="clearfix">
+	        <button type="submit" class="signupbtn" onclick="checkPass()">Sign Up</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<!--
+	<div class="">
+		<h2 class="">Upload a file</h2>
+	</div>
+	<div class="" id="messagesDiv">
+		<h6>Choose File</h6>
+		<input type="file" id="file" name="file"/>
+		<h6>File URL:</h6>
+		<span id="linkbox"></span>
+	</div>
+-->
+</body>
