@@ -4,17 +4,18 @@
 	<meta name="google-signin-client_id" content="214807410574-0qon7ml41jbfgcd8gcg9lvk2t2tokk23.apps.googleusercontent.com">
 	<link rel="stylesheet" type="text/css" href="CSS/login.css">
 	<title>StickDex</title>
-	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+	<script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script>
 	  	// Initialize Firebase
-	  	var config = {
-	    	apiKey: "AIzaSyBIfMY5xezNuNMiA2eh7c7llklT0INoBkQ",
-	    	authDomain: "lipstickdex.firebaseapp.com",
-	    	databaseURL: "https://lipstickdex.firebaseio.com",
-	    	storageBucket: "gs://lipstickdex.appspot.com",
-	    	messagingSenderId: "214807410574"
-	  	};
+	  var config = {
+	    apiKey: "AIzaSyBWUmbV2b9hIq6f4lDO5XSg1Bp-A-kEkCg",
+	    authDomain: "lipstickdexpractice.firebaseapp.com",
+	    databaseURL: "https://lipstickdexpractice.firebaseio.com",
+	    storageBucket: "lipstickdexpractice.appspot.com",
+	    messagingSenderId: "226526393626"
+	  };
 	  	firebase.initializeApp(config);
 	  	var provider = new firebase.auth.GoogleAuthProvider();
 	  	function initApp() {
@@ -151,11 +152,17 @@
 
 <body>
 	<nav>
-		<div class="homelink" style="text-align:center;">
-			<a href="index.html">stickDex</a>
+		<div id="practice">
 			<button id="signOut" onclick="signOut()">Logout</button>
 		</div>
+		
+		<div class="homelink" style="text-align:center;">
+			<a href="index.html">stickDex</a>
+		</div>
 	</nav>
+
+
+
 
 	<p>
 		A fun way to keep track of your lipstick collection.

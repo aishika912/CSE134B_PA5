@@ -11,15 +11,19 @@
 
 	<!--Nav Bar-->
 	<nav>
+		<div id = "practice">
+			<button id="signOut" onclick="signOut()">Logout</button>
+		</div>
 
 		<span class="dropdown">
 			<div class="homelink" style="text-align:center;">
 				<a href="home.html">stickDex</a>
-				
-				<button id="signOut" onclick="signOut()">Logout</button>
+			
+<!--	
 				<button class="dropbtn">
 					<img src="IMG/hamburger.png" style="width:20px;height:20px;">
 				</button>
+				-->
 			</div>
 			<div class="navbarlinks">
 				<span class = "navbarvals"><a href="home.html#scrollpadding2">My Collections</a></span> 
@@ -144,15 +148,15 @@
 
 
 
-<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyBIfMY5xezNuNMiA2eh7c7llklT0INoBkQ",
-    authDomain: "lipstickdex.firebaseapp.com",
-    databaseURL: "https://lipstickdex.firebaseio.com",
-    storageBucket: "gs://lipstickdex.appspot.com",
-    messagingSenderId: "214807410574"
+    apiKey: "AIzaSyBWUmbV2b9hIq6f4lDO5XSg1Bp-A-kEkCg",
+    authDomain: "lipstickdexpractice.firebaseapp.com",
+    databaseURL: "https://lipstickdexpractice.firebaseio.com",
+    storageBucket: "lipstickdexpractice.appspot.com",
+    messagingSenderId: "226526393626"
   };
   firebase.initializeApp(config);
 </script>
