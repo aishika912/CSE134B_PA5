@@ -367,3 +367,7 @@ li {
 	height: 100px;
 	display: inline-block;
 }
+#data-info > h4 {
+	font-family: "Helvetica";
+	font-size: 15px;
+}
