@@ -343,7 +343,7 @@ li {
 
 
 #scrollpadding1 {
-	height: 120px;
+	/*height: 120px;*/
 	border: red 2px solid;
 	visibility: hidden;
 }

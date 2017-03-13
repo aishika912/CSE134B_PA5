@@ -124,7 +124,7 @@ function addStickFn() {
 		    var theColor = colorVal.value;
 		    var theType = typeVal.value;
 		    var theOwn = ownVal.checked;
-		    var key = theBrand + theName;
+		    var key = theBrand.replace(/ /g,'') + theName.replace(/ /g,'');
 
 		    var file = document.getElementById('uploadpic').files[0];
     		// the file is the first element in the files property
@@ -246,12 +246,13 @@ firebase.auth().onAuthStateChanged(function(currentUser) {
 */
 
 			//img.src = "lipstick.jpg";
-			img.width = "80";
+			img.width = "100";
 			img.height = "100";
 			//console.log(uniqueId);
 		    var att = "displayStickInfoFn(" + uniqueId +");";
 		    //console.log(att);
 			img.setAttribute("onclick", att);
+			console.log(att);
 		    //console.log(att);
 		    //a.appendChild(img);
 
