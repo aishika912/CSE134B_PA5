@@ -92,7 +92,7 @@ function displaySticksFn(data) {
 		span_wrap.style.color = "#008B8B";
 		span_wrap.innerHTML = "$";
 		span_wrap.innerHTML = span_wrap.innerHTML + num2;
-		want_average.innerHTML = "Your wishlist's total cost is ";
+		want_average.innerHTML = "Your wishlist's average cost is ";
 		want_average.appendChild(span_wrap);
 		want_average.innerHTML += " on lipsticks.";
 		document.getElementById("data-info").appendChild(want_average);
